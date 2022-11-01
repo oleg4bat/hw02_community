@@ -16,9 +16,18 @@ class Post(models.Model):
         'Group',
         blank=True,
         null=True,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
+        related_name='posts'
     )
 
+
+    class Meta:
+        ordering = ['-pub_date']
+
+
+    def __str__(self) -> str:
+        return self.text
+    
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
