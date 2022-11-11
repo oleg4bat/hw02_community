@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-<title>Записи сообщества {{ group }}</title>
+Записи сообщества {{ group }}
 {% endblock %}
 {% block content %}
-<!-- Добавил include потому что ты просил так -->
-<!-- Но думаю на данном этапе проекта можно было и в base.html -->
-<!-- чем делать отдельным файлом -->
-<!-- Также когда я цикл поместил в main.html -->
-<!-- pytest ругался, почему? написано было: укажите тег цикла-->
-{% for post in posts %}
+{% for post in page_obj %}
 {% include 'includes/main.html' %}
 {% endfor %}
+{% include 'posts/includes/paginator.html' %}
 {% endblock %}
